@@ -35,7 +35,7 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - python -m unittest -v tests
+    - python -m unittest -v tests/test_requests_file.py
   requires:
     - pip
     - pytest
