@@ -36,12 +36,12 @@ test:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
     - python -m unittest -v tests
-  requests:
+  requires:
     - pip
     - pytest
 
 about:
-  home: http://github.com/dashea/requests-file
+  home: https://github.com/dashea/requests-file
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
@@ -50,4 +50,4 @@ about:
     Requests-File is a transport adapter for use with the Requests 
     Python library to allow local filesystem access via file:// URLs.
   doc_url: https://github.com/dashea/requests-file/blob/master/README.rst
-  dev_url: http://github.com/dashea/requests-file
+  dev_url: https://github.com/dashea/requests-file
