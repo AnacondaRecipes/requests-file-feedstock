@@ -1,18 +1,16 @@
 {% set name = "requests-file" %}
-{% set version = "2.1.0" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: 0f549a3f3b0699415ac04d167e9cb39bccfb730cb832b4d20be3d9867356e658
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('-', '_') }}-{{ version }}.tar.gz
+  sha256: f14243d7796c588f3521bd423c5dea2ee4cc730e54a3cac9574d78aca1272576
 
 build:
   number: 0
-  script_env:
-    - SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -41,7 +39,7 @@ test:
     - pytest
 
 about:
-  home: https://github.com/dashea/requests-file
+  home: https://codeberg.org/dashea/requests-file
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
@@ -49,5 +47,5 @@ about:
   description: |
     Requests-File is a transport adapter for use with the Requests 
     Python library to allow local filesystem access via file:// URLs.
-  doc_url: https://github.com/dashea/requests-file/blob/master/README.rst
-  dev_url: https://github.com/dashea/requests-file
+  doc_url: https://codeberg.org/dashea/requests-file/src/branch/main/README.rst
+  dev_url: https://codeberg.org/dashea/requests-file
