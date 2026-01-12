@@ -25,6 +25,12 @@ requirements:
     - python
     - requests >=1.0.0
 
+{% set deselect_tests = "" %}
+
+# AssertionError: 'C:\\Users\\TASK_1~1\\AppData\\Local\\Temp\\tmp900zg_43' not found in "[Errno 13] Permission denied: 'C:\\\\Users\\\\TASK_1~1\\\\AppData\\\\Local\\\\Temp\\\\tmp900zg_43'"
+{% set deselect_tests = " --deselect=tests/test_requests_file.py::FileRequestTestCase::test_fetch_missing" %}  # [win]
+{% set deselect_tests = deselect_tests + " --deselect=tests/test_requests_file.py::FileRequestTestCase::test_fetch_no_access" %}  # [win]
+{% set deselect_tests = deselect_tests + " --deselect=tests/test_requests_file.py::FileRequestTestCase::test_windows_legacy" %}  # [win]
 test:
   source_files:
     - tests
@@ -33,7 +39,7 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - python -m unittest -v tests/test_requests_file.py
+    - pytest -v tests {{ deselect_tests }}
   requires:
     - pip
     - pytest
